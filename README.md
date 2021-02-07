@@ -8,6 +8,8 @@
 dotnet ef migrations add "Nome do migration"
 dotnet ef database update
 
+Obs: Tem que criar uma pasta na Unidade C:\ com os respectivos nomes: "naoprocessados" e "processados"
+
 
 
 
