@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Equals_IOC
 {
-    public class Docker
+    public static class Docker
     {
         public static void Register(IServiceCollection service)
         {

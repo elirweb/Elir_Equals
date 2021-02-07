@@ -23,14 +23,23 @@ namespace Equals_DomainService.Entites
 
         public Acquirer( string tipo, string estabelecimento, string dataproc, string periodoini, string periodofi, string sequencial, string adq)
         {
-            
-            TipoRegistro = tipo;
-            Estabelecimento = estabelecimento;
-            DataProcessamento = dataproc;
-            PeriodoInicial = periodoini;
-            PeriodoFinal = periodofi;
-            Sequencial = sequencial;
-            Adquirente = adq;
+            if (adq.Equals("FagammonCard"))
+            {
+                TipoRegistro = tipo;
+                DataProcessamento = dataproc;
+                Estabelecimento = estabelecimento;
+                Adquirente = adq;
+                Sequencial = sequencial.Length > 6 ? sequencial.Substring(0, 7) : sequencial;
+            }
+            else {
+                TipoRegistro = tipo;
+                Estabelecimento = estabelecimento;
+                DataProcessamento = dataproc;
+                PeriodoInicial = periodoini;
+                PeriodoFinal = periodofi;
+                Sequencial = sequencial.Length > 7 ? sequencial.Substring(0,7):sequencial;
+                Adquirente = adq;
+            }
         }
     }
 }

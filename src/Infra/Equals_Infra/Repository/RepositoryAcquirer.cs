@@ -16,7 +16,7 @@ namespace Equals_Infra.Repository
         }
 
         public List<Acquirer> Get(DateTime date)
-            => _context.Acquirer.Where(c=>c.PeriodoInicial.Equals(date.ToString("yyyyMMdd").Replace("/",""))).ToList();
+            => _context.Acquirer.Where(c=>c.PeriodoInicial.Equals(date.ToString("yyyyMMdd"))).ToList();
 
        
     }

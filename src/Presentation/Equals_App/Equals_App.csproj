@@ -28,7 +28,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Equals_Application\Equals_Application.csproj" />
     <ProjectReference Include="..\..\Util\Equals_IOC\Equals_IOC.csproj" />
-    <ProjectReference Include="..\..\Util\Equals_Util\Equals_Util.csproj" />
   </ItemGroup>
 
 </Project>

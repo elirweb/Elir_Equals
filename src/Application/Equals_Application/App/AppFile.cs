@@ -6,44 +6,41 @@ namespace Equals_Application.App
 {
     public class AppFile : Service.ServiceFile, Interfaces.IFile
     {
-        private List<Equals_Domain.Entites.Acquirer> Acquirers = new List<Equals_Domain.Entites.Acquirer>();
-        private List<Equals_Domain.Entites.File> Files = new List<Equals_Domain.Entites.File>();
+        private  List<Equals_Domain.Entites.Acquirer> Acquirers = new List<Equals_Domain.Entites.Acquirer>();
+        private  List<Equals_Domain.Entites.File> Files = new List<Equals_Domain.Entites.File>();
 
-        private Equals_DomainService.Entites.File _files = new Equals_DomainService.Entites.File();
+        private Equals_DomainService.Entites.File _files = new File();
         public AppFile(Equals_Infra.Uow.IUoW ou) : base(ou)
         {
 
         }
         public Equals_DomainService.Entites.File Add(Input.Acquirer model)
         {
-            int day = 0;
+            
             if (model.Periodicidade.Equals(Equals_Util.Enums.Periodicidade.Diario.ToString()))
             {
+
                 Acquirers = _context.Acquirer.Get(model.Date);
-                if (Acquirers.Count > 0)
+                foreach (var item in Acquirers)
                 {
-
-                    _files.ListAcquirer.Add(Mapper.File.Acquirers(Acquirers));
-
-                    _context.File.Add(Mapper.File.Files(Acquirers));
+                    _files.DateFile = model.Date.ToString("yyyyMMdd");
+                    _context.File.Add(Mapper.File.Files(item));
                     _context.Commit();
+
                 }
             }
             else
             {
-                for (int i = 1; i < 4; i++)
+
+                Acquirers = _context.Acquirer.Get(model.Date.AddDays(7));
+                foreach (var item in Acquirers)
                 {
-                    Acquirers = _context.Acquirer.Get(model.Date.AddDays(day));
-                    if (Acquirers.Count > 0)
-                    {
-
-                        _files.ListAcquirer.Add(Mapper.File.Acquirers(Acquirers));
-
-                        _context.File.Add(Mapper.File.Files(Acquirers));
-                        _context.Commit();
-                    }
-                    day = 7;
+                    _files.DateFile = model.Date.ToString("yyyyMMdd");
+                    _context.File.Add(Mapper.File.Files(item));
+                    _context.Commit();
                 }
+               
+
             }
             return _files;
 
@@ -54,8 +51,8 @@ namespace Equals_Application.App
         {
             Files = _context.File.Get(adq);
             var _file = new File();
-
-            if (Files.Count > 0) 
+            
+            if (Files.Count > 0)
                 _file.StatusFile = $"{Files.Count} arquivos foram recepcionados";
             else
                 _file.StatusFile = $"{Files.Count} arquivos não foram recepcionados";

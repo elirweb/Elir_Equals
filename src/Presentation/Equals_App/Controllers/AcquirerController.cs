@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Equals_App.Controllers
 {
@@ -19,7 +17,18 @@ namespace Equals_App.Controllers
             _repofile = file;
         }
 
-        [HttpPost, Route("acquirer")]
+  
+        [HttpGet, Route("adq/{name}")]
+        public ActionResult<IEnumerable<Equals_DomainService.Entites.File>> Acquirer(string name)
+        {
+            if (name.Equals(string.Empty))
+                return BadRequest();
+            var resp = _repofile.File(name);
+
+            return Ok(resp);
+        }
+
+        [HttpPost, Route("create")]
         public IActionResult Create([FromBody]Equals_Application.Input.Acquirer model)
         {
             if (model is null)
@@ -29,22 +38,12 @@ namespace Equals_App.Controllers
             return Ok(resp);
         }
 
-        [HttpPost, Route("file")]
-        public IActionResult Get([FromBody]Equals_Application.Input.Acquirer model)
+        [HttpPost, Route("createfile")]
+        public IActionResult CreateFile([FromBody]Equals_Application.Input.Acquirer model)
         {
             if (model is null)
                 return BadRequest();
             var resp = _repofile.Add(model);
-
-            return Ok(resp);
-        }
-
-        [HttpGet, Route("adq/{name}")]
-        public IActionResult Acquirer(string name)
-        {
-            if (name.Equals(string.Empty))
-                return BadRequest();
-            var resp = _repofile.File(name);
 
             return Ok(resp);
         }

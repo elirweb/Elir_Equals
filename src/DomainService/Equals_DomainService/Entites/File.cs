@@ -7,6 +7,7 @@ namespace Equals_DomainService.Entites
         public Acquirer Acquirer { get; set; }
         public int IdAcquirer { get; private set; }
         public string StatusFile { get;  set; }
+        public string DateFile { get; set; }
         public List<Acquirer> ListAcquirer { get; set; } = new List<Acquirer>();
         public File()
         {
