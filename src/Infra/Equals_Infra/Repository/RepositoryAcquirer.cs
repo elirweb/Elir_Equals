@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Equals_Domain.Entites;
 
 namespace Equals_Infra.Repository
 {
@@ -11,5 +14,10 @@ namespace Equals_Infra.Repository
             _context?.Dispose();
             GC.SuppressFinalize(this);
         }
+
+        public List<Acquirer> Get(DateTime date)
+            => _context.Acquirer.Where(c=>c.PeriodoInicial.Equals(date.ToString("yyyyMMdd").Replace("/",""))).ToList();
+
+       
     }
 }

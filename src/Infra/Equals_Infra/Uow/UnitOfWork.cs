@@ -14,18 +14,21 @@ namespace Equals_Infra.Uow
         {
             _repository = cont;
             Acquirer = new Repository.RepositoryAcquirer(_repository);
+            File = new Repository.RepositoryFile(_repository);
         }
 
         public IAcquirer Acquirer { get; private set; }
 
+        public IFile File { get; private set; }
+
         public void Commit()
         {
-            throw new NotImplementedException();
+            _repository.SaveChanges();
         }
 
         public void Rolback()
         {
-            throw new NotImplementedException();
+            _repository.Database.RollbackTransaction();
         }
     }
 }

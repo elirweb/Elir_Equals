@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ByRequest.Infra
+namespace Equals_Infra
 {
     class Program
     {

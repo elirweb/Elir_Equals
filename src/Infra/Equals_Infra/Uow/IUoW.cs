@@ -9,6 +9,8 @@ namespace Equals_Infra.Uow
         void Commit();
         void Rolback();
 
-       Equals_Domain.Interfaces.IAcquirer Acquirer { get; }
+        Equals_Domain.Interfaces.IAcquirer Acquirer { get; }
+         Equals_Domain.Interfaces.IFile File { get; }
+
     }
 }

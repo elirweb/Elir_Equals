@@ -1,5 +1,4 @@
-﻿using Equals_Application.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,6 +6,6 @@ namespace Equals_Application.Interfaces
 {
     public interface IAcquirer
     {
-        Acquirer Add(Acquirer model);
+        Equals_DomainService.Entites.Acquirer Add(Input.Acquirer model);
     }
 }

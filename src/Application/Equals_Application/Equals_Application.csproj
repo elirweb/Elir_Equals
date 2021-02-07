@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DomainService\Equals_DomainService\Equals_DomainService.csproj" />
     <ProjectReference Include="..\..\Domain\Equals_Domain\Equals_Domain.csproj" />
     <ProjectReference Include="..\..\Infra\Equals_Infra\Equals_Infra.csproj" />
     <ProjectReference Include="..\..\Util\Equals_Util\Equals_Util.csproj" />

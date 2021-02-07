@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Equals_Application.Service
 {
-    public class ServiceAcquirer
+    public class ServiceFile
     {
         protected readonly Equals_Infra.Uow.IUoW _context;
-        public ServiceAcquirer(Equals_Infra.Uow.IUoW ou)
+        public ServiceFile(Equals_Infra.Uow.IUoW ou)
         {
             _context = ou;
 

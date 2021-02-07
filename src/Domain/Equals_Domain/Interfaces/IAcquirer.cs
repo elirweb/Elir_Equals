@@ -7,6 +7,6 @@ namespace Equals_Domain.Interfaces
 {
     public interface IAcquirer: Common.IRepository<Acquirer>, IDisposable
     {
-
+        List<Equals_Domain.Entites.Acquirer> Get(DateTime date);
     }
 }
